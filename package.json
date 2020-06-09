@@ -1,0 +1,50 @@
+{
+    "version": "0.0.1",
+    "license": "MIT",
+    "main": "src/index.js",
+    "scripts": {
+        "lint": "xo",
+        "test": "jest"
+    },
+    "peerDependencies": {
+        "kefir": "^3.8.7",
+        "storeon": "^3.0.2"
+    },
+    "husky": {
+        "hooks": {
+            "pre-commit": "xo"
+        }
+    },
+    "xo": {
+        "envs": [
+            "es2020",
+            "jest"
+        ],
+        "prettier": {
+            "printWidth": 80,
+            "semi": true,
+            "singleQuote": true,
+            "trailingComma": "es6",
+            "useTabs": true
+        }
+    },
+    "name": "@mariosant/storeon-streams",
+    "author": {
+        "name": "Marios Antonoudiou",
+        "email": "mariosant@sent.com",
+        "website": "https://mariosant.dev"
+    },
+    "description": "Side effects management library for storeon",
+    "module": "src/index.js",
+    "devDependencies": {
+        "@babel/core": "^7.10.2",
+        "@babel/preset-env": "^7.10.2",
+        "babel-jest": "^26.0.1",
+        "delay": "^4.3.0",
+        "husky": "^4.2.3",
+        "jest": "^26.0.1",
+        "kefir": "^3.8.7",
+        "storeon": "^3.0.2",
+        "xo": "^0.32.0"
+    }
+}
