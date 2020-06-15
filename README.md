@@ -6,6 +6,22 @@
 
 WIP
 
+## Install
+
+There is a published package at npm for easy installation.
+
+```bash
+$ npm install @mariosant/storeon-streams
+```
+
+And
+
+```javascript
+import {fromStoreon} from '@mariosant/storeon-streams;
+```
+
+### Examples
+
 Please see examples directory.
 
 ## Meta
@@ -14,7 +30,7 @@ Marios Antonoudiou – [@marios_ant](https://twitter.com/marios_ant) – mariosa
 
 Distributed under the MIT license.
 
-[https://github.com/mariosant/cn](https://github.com/mariosant/cn)
+[https://github.com/mariosant/storeon-streams](https://github.com/mariosant/storeon-streams)
 
 ## Contributing
 
