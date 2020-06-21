@@ -10,7 +10,7 @@ Side effects management library for storeon
 
 ## Why?
 
-Reactive functional programming (RFP) can help you write complex async scenarios in a beautiful way. 
+Reactive functional programming (RFP) can help you write complex async scenarios in a beautiful way.
 
 You can easily write autosuggestion logic, optimistic operations and other complex async functionality without the mess.
 
@@ -60,10 +60,12 @@ The module has a minimal api in the form of es exports.
 `fromStoreon` is what you will be using for 90% of the time. It is responsible for connecting a kefir stream with your store.
 
 ```typescript
-fromStoreon(store, ({changeStream, dispatchStream}) => Stream<[event, payload]>)
+fromStoreon(store, ({actionStream, changeStream, dispatchStream}) => Stream<[event, payload]>)
 ```
 
 The plugin will emit actions, everytime the stream emits an event - so make sure the stream will emit only `[event, payload]` values.
+
+`actionStream` is a kefir stream that emits when a specific action is emitted. ie `actionStream('user/save')`
 
 `changeStream` is a kefir stream that emits when the store changes. This is using `@changed` event internally.
 
@@ -76,7 +78,9 @@ Both of them are emitting the default values of storeon, wrapped in an array for
 Sometimes you want a storeon module that deals only with side effects. `fromStoreonModule` is a wrapper that does exactly that.
 
 ```javascript
-const sideEffectsModule = fromStoreonModule(() => interval(1000, ["time/tick"]).take(10));
+const sideEffectsModule = fromStoreonModule(() =>
+  interval(1000, ["time/tick"]).take(10)
+);
 
 const store = createStoreon([moduleA, moduleB, sideEffectsModule]);
 ```

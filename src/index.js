@@ -17,7 +17,13 @@ export const fromStoreon = (store, callback) => {
 		return off;
 	});
 
-	const epic = callback({dispatchStream, changeStream}) || never();
+	const actionStream = (action) => {
+		const filterAction = isAction(action);
+		return dispatchStream.filter((event) => filterAction(event));
+	};
+
+	const epic =
+		callback({actionStream, dispatchStream, changeStream}) || never();
 
 	epic.observe(([action, payload]) => store.dispatch(action, payload));
 };

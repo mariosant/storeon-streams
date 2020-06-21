@@ -16,10 +16,9 @@ const moduleWithSideEffects = (store) => {
 		console.log('db/set');
 	});
 
-	fromStoreon(store, ({dispatchStream, _changeStream}) =>
-		dispatchStream
-			.filter(([_state, [action]]) => action === 'db/set')
-			.log('dispatch')
+	fromStoreon(store, ({actionStream}) =>
+		actionStream('db/set')
+			.log('db/set action')
 			.flatMapLatest(() => never())
 	);
 };

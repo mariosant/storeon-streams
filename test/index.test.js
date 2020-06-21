@@ -4,6 +4,7 @@ import {fromStoreon} from '../src';
 
 const dispatchHandle = jest.fn();
 const changeHandle = jest.fn();
+const actionHandle = jest.fn();
 
 const initialState = {active: true};
 
@@ -12,8 +13,11 @@ const sampleModule = (store) => {
 
 	store.on('toggle', (state) => ({active: !state.active}));
 
-	fromStoreon(store, ({changeStream, dispatchStream}) =>
+	fromStoreon(store, ({actionStream, changeStream, dispatchStream}) =>
 		merge([
+			actionStream('action')
+				.map(([state, action]) => actionHandle(state, action))
+				.flatMap(() => never()),
 			dispatchStream
 				.map(([state, action]) => dispatchHandle(state, action))
 				.flatMap(() => never()),
@@ -37,11 +41,20 @@ describe('fromStoreon', () => {
 			true,
 			undefined
 		]);
+
+		expect(actionHandle).not.toHaveBeenCalled();
 	});
 
 	test('change gets called on event', () => {
 		store.dispatch('toggle', true);
 
 		expect(changeHandle).toHaveBeenCalledWith({active: false}, {active: false});
+		expect(actionHandle).not.toHaveBeenCalled();
+	});
+
+	test('actionStream handles stuff correctly', () => {
+		store.dispatch('action', true);
+
+		expect(actionHandle).toHaveBeenCalled();
 	});
 });
