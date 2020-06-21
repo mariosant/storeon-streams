@@ -17,7 +17,7 @@ export const fromStoreon = (store, callback) => {
 		return off;
 	});
 
-	const epic = callback({dispatchStream, changeStream}) ?? never();
+	const epic = callback({dispatchStream, changeStream}) || never();
 
 	epic.observe(([action, payload]) => store.dispatch(action, payload));
 };
