@@ -1,5 +1,5 @@
 {
-  "version": "0.0.5-alpha.0",
+  "version": "0.0.5",
   "license": "MIT",
   "source": "src/index.js",
   "main": "dist/storeon-streams.umd.js",
