@@ -1,6 +1,8 @@
 import {stream, never} from 'kefir';
 
-export const fromStoreon = (store, callback) => {
+const noop = () => {};
+
+export const fromStoreon = (store, callback = noop) => {
 	const dispatchStream = stream((emitter) => {
 		const off = store.on('@dispatch', (state, action) => {
 			emitter.value([state, action]);

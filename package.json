@@ -11,7 +11,7 @@
   },
   "peerDependencies": {
     "kefir": "^3.8.7",
-    "storeon": "^3.0.2"
+    "storeon": "^3.0.0"
   },
   "husky": {
     "hooks": {
@@ -39,15 +39,15 @@
   },
   "description": "Side effects management library for storeon",
   "devDependencies": {
-    "@babel/core": "^7.10.2",
-    "@babel/preset-env": "^7.10.2",
-    "babel-jest": "^26.0.1",
-    "delay": "^4.3.0",
-    "husky": "^4.2.3",
-    "jest": "^26.0.1",
+    "@babel/core": "^7.12.3",
+    "@babel/preset-env": "^7.12.1",
+    "babel-jest": "^26.6.3",
+    "delay": "^4.4.0",
+    "husky": "^4.3.0",
+    "jest": "^26.6.3",
     "kefir": "^3.8.7",
-    "microbundle": "^0.12.2",
-    "storeon": "^3.0.2",
-    "xo": "^0.32.0"
+    "microbundle": "^0.12.4",
+    "storeon": "^3.1.1",
+    "xo": "^0.34.0"
   }
 }
