@@ -17,8 +17,8 @@ jobs:
         registry-url: 'https://registry.npmjs.org'
         scope: '@mariosant' # Defaults to the user or organization that owns the workflow file
 
-    - run: yarn install --frozen-lockfile
-    - run: yarn publish --access public
+    - run: npm install
+    - run: npm publish --access public
       env:
         NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
