@@ -65,7 +65,7 @@ fromStoreon(store, ({actionStream, changeStream, dispatchStream}) => Stream<[eve
 
 The plugin will emit actions, everytime the stream emits an event - so make sure the stream will emit only `[event, payload]` values.
 
-`actionStream` is a kefir stream that emits when a specific action is emitted. ie `actionStream('user/save')`
+`actionStream` is function that returns a kefir stream that emits whenever a specific action is emitted. ie `actionStream('user/save')`
 
 `changeStream` is a kefir stream that emits when the store changes. This is using `@changed` event internally.
 
